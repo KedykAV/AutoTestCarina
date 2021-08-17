@@ -14,7 +14,8 @@ import java.util.Random;
 
 
 public class SectionPage extends AbstractPage {
-    private static final Logger LOGGER = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
+    private static final Logger LOGGER = LoggerFactory.getLogger(SectionPage.class);
+
     @FindBy(xpath = "//h2[contains(text(), ' Seagate ')]")
     private ExtendedWebElement product;
     @FindBy(xpath = "//div[@id='nav-logo']")

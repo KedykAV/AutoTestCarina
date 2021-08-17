@@ -2,11 +2,15 @@ package com.qaprosoft.carina.demo.amazontest;
 
 import com.qaprosoft.carina.core.foundation.IAbstractTest;
 import com.qaprosoft.carina.demo.gui.pages.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 
 public class FirstTets implements IAbstractTest {
+    private static final Logger LOGGER = LoggerFactory.getLogger(FirstTets.class);
+
     @Test()
     public void openPage(){
         HomePage homePage = new HomePage(getDriver());

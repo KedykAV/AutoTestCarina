@@ -4,8 +4,12 @@ import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebEleme
 import com.qaprosoft.carina.core.gui.AbstractPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class ProductPage extends AbstractPage {
+    private static final Logger LOGGER = LoggerFactory.getLogger(ProductPage.class);
+
     @FindBy(xpath = "//input[@id='add-to-cart-button']")
     private ExtendedWebElement addButton;
 

@@ -4,8 +4,11 @@ import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebEleme
 import com.qaprosoft.carina.core.gui.AbstractPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class LanguagePage extends AbstractPage {
+    private static final Logger LOGGER = LoggerFactory.getLogger(LanguagePage.class);
     @FindBy(xpath = "//span[contains(text(), ' Deutsch ')]")
     private ExtendedWebElement deutsch;
     public LanguagePage(WebDriver driver) {

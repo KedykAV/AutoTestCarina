@@ -31,9 +31,7 @@ import com.qaprosoft.carina.core.gui.AbstractPage;
 
 
 public class HomePage extends AbstractPage {
-    private static final Logger LOGGER = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
-
-
+    private static final Logger LOGGER = LoggerFactory.getLogger(HomePage.class);
 
     @FindBy(xpath ="//input[@type='email']")
     private ExtendedWebElement emailField;

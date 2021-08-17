@@ -11,7 +11,7 @@ import org.slf4j.LoggerFactory;
 import java.lang.invoke.MethodHandles;
 
 public class AuthorizationPage extends AbstractPage {
-    private static final Logger LOGGER = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
+    private static final Logger LOGGER = LoggerFactory.getLogger(AuthorizationPage.class);
 
     @FindBy(id = "ap_email")
     private ExtendedWebElement emailField;
