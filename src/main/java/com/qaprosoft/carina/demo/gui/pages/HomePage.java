@@ -15,7 +15,6 @@
  */
 package com.qaprosoft.carina.demo.gui.pages;
 
-import java.lang.invoke.MethodHandles;
 import java.util.List;
 
 import com.qaprosoft.carina.core.foundation.utils.Configuration;
@@ -61,26 +60,50 @@ public class HomePage extends AbstractPage {
     @FindBy(xpath = "//a[contains(text( ),  'Conditions ')]")
     private ExtendedWebElement footer;
 
+    @FindBy(xpath = "//i[@class='hm-icon nav-sprite']")
+    private ExtendedWebElement allBtn;
+    @FindBy(xpath = "//div[contains(text(),'Computers')]")
+    private ExtendedWebElement compBtn;
+    @FindBy(xpath = "//a[contains(text(),'Computer Components')]")
+    private ExtendedWebElement ccBtn;
+    @FindBy(xpath = "//span[contains(text(), 'Computer Components')]//parent::span[@class='a-list-item']")
+    private ExtendedWebElement sectText;
+
+
     public HomePage(WebDriver driver) {
         super(driver);
         setPageAbsoluteURL(R.CONFIG.get(Configuration.Parameter.URL.getKey()));
     }
 
+
+
     public ExtendedWebElement getLoginButton(){
         return hello;
     }
-    public ExtendedWebElement getHelloText(){
-        return helloTest;
+    public void clickAllBtn(){
+        allBtn.click();
     }
+    public void clickCompBtn() {compBtn.click();}
+    public void clickCcBtn() {ccBtn.click();}
+    public String getSectText(){return sectText.getText();}
+
+    public String getHelloText(){
+        return helloTest.getText();
+    }
+
     public ExtendedWebElement getFooter(){
         return  footer;
     }
+
     public void scrollToFooter (){
         footer.scrollTo();
     }
-    public void scrollToHeader (){
+
+    public boolean scrollToHeader (){
         hello.scrollTo();
+        return true;
     }
+
 
     public ExtendedWebElement getSection() {
         return section;
@@ -98,5 +121,7 @@ public class HomePage extends AbstractPage {
     public List<ExtendedWebElement> getSectors(){
         return sectors;
     }
+
+
 }
 

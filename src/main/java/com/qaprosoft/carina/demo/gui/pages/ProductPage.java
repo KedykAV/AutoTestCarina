@@ -7,6 +7,8 @@ import org.openqa.selenium.support.FindBy;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.List;
+
 public class ProductPage extends AbstractPage {
     private static final Logger LOGGER = LoggerFactory.getLogger(ProductPage.class);
 
@@ -22,9 +24,12 @@ public class ProductPage extends AbstractPage {
     @FindBy(xpath = "//input[contains(@id, 'buy')]")
     private ExtendedWebElement buyButton;
 
+
+
     public ProductPage(WebDriver driver) {
         super(driver);
     }
+
     public ExtendedWebElement getAddButton(){
         return addButton;
     }

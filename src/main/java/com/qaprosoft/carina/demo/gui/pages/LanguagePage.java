@@ -14,7 +14,11 @@ public class LanguagePage extends AbstractPage {
     public LanguagePage(WebDriver driver) {
         super(driver);
     }
-    public ExtendedWebElement getDeutsch(){
+    public void clickDE(){
+        deutsch.click();
+    }
+    public ExtendedWebElement getTextLang(){
+        deutsch.getText();
         return deutsch;
     }
 }

@@ -20,8 +20,9 @@ public class SectionPage extends AbstractPage {
     private ExtendedWebElement product;
     @FindBy(xpath = "//div[@id='nav-logo']")
     private ExtendedWebElement navLogo;
-    @FindBy(xpath = "//div[contains(@class, 'a-image-container')]")
+    @FindBy(xpath = "//span[@class='a-size-base-plus a-color-base a-text-normal']")
     private List<ExtendedWebElement> productList;
+
 
 
     public SectionPage(WebDriver driver) {
@@ -33,8 +34,7 @@ public class SectionPage extends AbstractPage {
     public ExtendedWebElement getNavLogo(){
         return navLogo;
     }
-    public List<ExtendedWebElement> getProductList(){
-        return productList;
-    }
+    public List<ExtendedWebElement> getProductList(){return productList;}
+
 
 }

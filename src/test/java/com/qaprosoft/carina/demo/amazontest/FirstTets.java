@@ -16,6 +16,7 @@ public class FirstTets implements IAbstractTest {
         HomePage homePage = new HomePage(getDriver());
         homePage.open();
         Assert.assertTrue(homePage.isPageOpened(), "Home page is not opened");
+        homePage.getDriver().close();
     }
     @Test()
     public  void singUP(){
@@ -24,11 +25,10 @@ public class FirstTets implements IAbstractTest {
         Assert.assertTrue(homePage.isPageOpened(), "Home page is not opened");
         homePage.getLoginButton().click();
         AuthorizationPage authorizationPage = new AuthorizationPage(getDriver());
-        authorizationPage.getEmailField().type("alx.cyberskn@gmail.com");
-        authorizationPage.getContButton().click();
-        authorizationPage.getPassField().type("7T6-KNg-e5p-VSp");
-        authorizationPage.pause(3);
-        authorizationPage.getSingButton().click();
+        authorizationPage.authorization();
+        Assert.assertEquals(homePage.getHelloText(), "Hello, TestLaba21", "User not authorised");
+        homePage.getDriver().close();
+
     }
     @Test()
     public void scrolling(){
@@ -39,13 +39,22 @@ public class FirstTets implements IAbstractTest {
         homePage.pause(3);
         homePage.scrollToHeader();
         homePage.pause(3);
+        Assert.assertTrue(homePage.scrollToHeader());
+        homePage.getDriver().close();
+
     }
     @Test()
     public void openSection(){
         HomePage homePage = new HomePage(getDriver());
         homePage.open();
         Assert.assertTrue(homePage.isPageOpened(), "Home page is not opened");
-        homePage.getSectors().get(2).click();
+        homePage.clickAllBtn();
+        pause(2);
+        homePage.clickCompBtn();
+        pause(2);
+        homePage.clickCcBtn();
+        Assert.assertEquals(homePage.getSectText(), "Computer Components", "Section don't open!");
+        getDriver().close();
     }
     @Test()
     public void returnHome(){
@@ -55,6 +64,10 @@ public class FirstTets implements IAbstractTest {
         homePage.getSection().click();
         SectionPage sectionPage = new SectionPage(getDriver());
         sectionPage.getNavLogo().click();
+        getDriver().getTitle();
+        Assert.assertEquals(getDriver().getTitle(), "Amazon.com. Spend less. Smile more.", "Don't return to Home Page");
+        getDriver().close();
+
     }
     @Test
     public void searchLoad() {
@@ -63,15 +76,25 @@ public class FirstTets implements IAbstractTest {
         Assert.assertTrue(homePage.isPageOpened(), "Home page is not opened");
         homePage.getSearchField().type("samsung");
         homePage.getSearchButton().click();
+        SearchPage searchPage = new SearchPage(getDriver());
+        Assert.assertTrue(searchPage.getResults().get(1).getText().contains("SAMSUNG"));
+        getDriver().close();
     }
     @Test()
     public void openProduct(){
         HomePage homePage = new HomePage(getDriver());
         homePage.open();
         Assert.assertTrue(homePage.isPageOpened(), "Home page is not opened");
-        homePage.getSection().click();
+        homePage.clickAllBtn();
+        pause(2);
+        homePage.clickCompBtn();
+        pause(2);
+        homePage.clickCcBtn();
         SectionPage sectionPage = new SectionPage(getDriver());
-        sectionPage.getProduct().click();
+        sectionPage.getProductList().get(1).click();
+        ProductPage productPage = new ProductPage(getDriver());
+        Assert.assertTrue(productPage.getAddButton().isElementPresent());
+        getDriver().close();
     }
     @Test()
     public void changingLanguage(){
@@ -80,34 +103,34 @@ public class FirstTets implements IAbstractTest {
         Assert.assertTrue(homePage.isPageOpened(), "Home page is not opened");
         homePage.getLangButton().click();
         LanguagePage languagePage = new LanguagePage(getDriver());
-        languagePage.getDeutsch().click();
-        languagePage.pause(5);
+        languagePage.clickDE();
+        Assert.assertEquals(languagePage.getTextLang(), "deutsch", "Don't change language");
+        getDriver().close();
+        //question!
+
     }
     @Test()
     public void addToCart(){
         HomePage homePage = new HomePage(getDriver());
         homePage.open();
         Assert.assertTrue(homePage.isPageOpened(), "Home page is not opened");
-        homePage.getSection().click();
+        homePage.clickAllBtn();
+        pause(2);
+        homePage.clickCompBtn();
+        pause(2);
+        homePage.clickCcBtn();
         SectionPage sectionPage = new SectionPage(getDriver());
         sectionPage.getProductList().get(1).click();
         ProductPage productPage = new ProductPage(getDriver());
         productPage.getAddButton().click();
-        productPage.pause(3);
-        productPage.getCloseButton().click();
-        productPage.pause(5);
+        pause(2);
         productPage.getCartButton().click();
+        CartPage cartPage = new CartPage(getDriver());
+        Assert.assertTrue(cartPage.getProceedBtn().isElementPresent());
+        getDriver().close();
 
     }
-    @Test()
-    public void selectProduct(){
-        HomePage homePage = new HomePage(getDriver());
-        homePage.open();
-        Assert.assertTrue(homePage.isPageOpened(), "Home page is not opened");
-        homePage.getSectors().get(1).click();
-        SectionPage sectionPage = new SectionPage(getDriver());
-        sectionPage.getProductList().get(1).click();
-    }
+
 
     @Test()
     public void buyingProduct(){
@@ -116,18 +139,23 @@ public class FirstTets implements IAbstractTest {
         Assert.assertTrue(homePage.isPageOpened(), "Home page is not opened");
         homePage.getLoginButton().click();
         AuthorizationPage authorizationPage = new AuthorizationPage(getDriver());
-        authorizationPage.getEmailField().type("alx.cyberskn@gmail.com");
-        authorizationPage.getContButton().click();
-        authorizationPage.getPassField().type("7T6-KNg-e5p-VSp");
-        authorizationPage.pause(3);
-        authorizationPage.getSingButton().click();
-        homePage.pause(6);
-        homePage.getSection().click();
+        authorizationPage.authorization();
+        Assert.assertEquals(homePage.getHelloText(), "Hello, TestLaba21", "User not authorised");
+        homePage.clickAllBtn();
+        pause(2);
+        homePage.clickCompBtn();
+        pause(2);
+        homePage.clickCcBtn();
         SectionPage sectionPage = new SectionPage(getDriver());
         sectionPage.getProductList().get(1).click();
         ProductPage productPage = new ProductPage(getDriver());
         productPage.getBuyButton().click();
+        BuyPage buyPage = new BuyPage(getDriver());
+        Assert.assertEquals(buyPage.selectAddressText(),"Select a shipping address", "Buying page not open");
+        getDriver().close();
+
     }
+
 
 
 

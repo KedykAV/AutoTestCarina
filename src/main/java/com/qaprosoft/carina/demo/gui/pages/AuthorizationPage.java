@@ -1,6 +1,7 @@
 package com.qaprosoft.carina.demo.gui.pages;
 
 
+import com.qaprosoft.carina.core.foundation.utils.R;
 import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
 import com.qaprosoft.carina.core.gui.AbstractPage;
 import org.openqa.selenium.WebDriver;
@@ -37,6 +38,14 @@ public class AuthorizationPage extends AbstractPage {
     public ExtendedWebElement getSingButton(){
         return signButton;
     }
+    public void authorization(){
+        getEmailField().type(R.TESTDATA.get("login"));
+        getContButton().click();
+        getPassField().type(R.TESTDATA.get("password"));
+        pause(3);
+        getSingButton().click();
+    }
+
 
 
 }

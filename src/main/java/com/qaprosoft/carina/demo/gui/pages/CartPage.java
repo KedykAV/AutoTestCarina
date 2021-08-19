@@ -12,11 +12,10 @@ public class CartPage extends AbstractPage {
     public CartPage(WebDriver driver) {
         super(driver);
     }
-    @FindBy(xpath = "//h1[contains(text(), 'Your')]")
-    private ExtendedWebElement emptyCart;
-    public String getEmptyCart(){
-        return emptyCart.getText();
-    }
+    @FindBy(xpath = "//input [@name='proceedToRetailCheckout']")
+    private ExtendedWebElement proceedBtn;
+    public ExtendedWebElement getProceedBtn(){return proceedBtn;}
+
 
 
 }
