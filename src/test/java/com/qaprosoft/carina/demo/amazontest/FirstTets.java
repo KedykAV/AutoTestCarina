@@ -5,24 +5,29 @@ import com.qaprosoft.carina.demo.gui.pages.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 
 public class FirstTets implements IAbstractTest {
     private static final Logger LOGGER = LoggerFactory.getLogger(FirstTets.class);
 
-    @Test()
-    public void openPage(){
+    @BeforeMethod
+    public void openSite(){
         HomePage homePage = new HomePage(getDriver());
         homePage.open();
         Assert.assertTrue(homePage.isPageOpened(), "Home page is not opened");
-        homePage.getDriver().close();
     }
+    @AfterMethod
+    public void closeDriver(){
+        getDriver().close();
+    }
+
+
     @Test()
     public  void singUP(){
         HomePage homePage = new HomePage(getDriver());
-        homePage.open();
-        Assert.assertTrue(homePage.isPageOpened(), "Home page is not opened");
         homePage.getLoginButton().click();
         AuthorizationPage authorizationPage = new AuthorizationPage(getDriver());
         authorizationPage.authorization();
@@ -33,8 +38,6 @@ public class FirstTets implements IAbstractTest {
     @Test()
     public void scrolling(){
         HomePage homePage = new HomePage(getDriver());
-        homePage.open();
-        Assert.assertTrue(homePage.isPageOpened(), "Home page is not opened");
         homePage.scrollToFooter();
         homePage.pause(3);
         homePage.scrollToHeader();
@@ -46,8 +49,6 @@ public class FirstTets implements IAbstractTest {
     @Test()
     public void openSection(){
         HomePage homePage = new HomePage(getDriver());
-        homePage.open();
-        Assert.assertTrue(homePage.isPageOpened(), "Home page is not opened");
         homePage.clickAllBtn();
         pause(2);
         homePage.clickCompBtn();
@@ -59,8 +60,6 @@ public class FirstTets implements IAbstractTest {
     @Test()
     public void returnHome(){
         HomePage homePage = new HomePage(getDriver());
-        homePage.open();
-        Assert.assertTrue(homePage.isPageOpened(), "Home page is not opened");
         homePage.getSection().click();
         SectionPage sectionPage = new SectionPage(getDriver());
         sectionPage.getNavLogo().click();
@@ -72,8 +71,6 @@ public class FirstTets implements IAbstractTest {
     @Test
     public void searchLoad() {
         HomePage homePage = new HomePage(getDriver());
-        homePage.open();
-        Assert.assertTrue(homePage.isPageOpened(), "Home page is not opened");
         homePage.getSearchField().type("samsung");
         homePage.getSearchButton().click();
         SearchPage searchPage = new SearchPage(getDriver());
@@ -83,8 +80,6 @@ public class FirstTets implements IAbstractTest {
     @Test()
     public void openProduct(){
         HomePage homePage = new HomePage(getDriver());
-        homePage.open();
-        Assert.assertTrue(homePage.isPageOpened(), "Home page is not opened");
         homePage.clickAllBtn();
         pause(2);
         homePage.clickCompBtn();
@@ -99,21 +94,18 @@ public class FirstTets implements IAbstractTest {
     @Test()
     public void changingLanguage(){
         HomePage homePage = new HomePage(getDriver());
-        homePage.open();
-        Assert.assertTrue(homePage.isPageOpened(), "Home page is not opened");
         homePage.getLangButton().click();
         LanguagePage languagePage = new LanguagePage(getDriver());
         languagePage.clickDE();
-        Assert.assertEquals(languagePage.getTextLang(), "deutsch", "Don't change language");
+        Assert.assertEquals(languagePage.getTextLang(), "Deutsch - DE - Übersetzung", "Don't change language");
         getDriver().close();
-        //question!
+        ///!!!! асерт делать как в этом примере!
 
     }
+
     @Test()
     public void addToCart(){
         HomePage homePage = new HomePage(getDriver());
-        homePage.open();
-        Assert.assertTrue(homePage.isPageOpened(), "Home page is not opened");
         homePage.clickAllBtn();
         pause(2);
         homePage.clickCompBtn();
@@ -135,8 +127,6 @@ public class FirstTets implements IAbstractTest {
     @Test()
     public void buyingProduct(){
         HomePage homePage = new HomePage(getDriver());
-        homePage.open();
-        Assert.assertTrue(homePage.isPageOpened(), "Home page is not opened");
         homePage.getLoginButton().click();
         AuthorizationPage authorizationPage = new AuthorizationPage(getDriver());
         authorizationPage.authorization();
@@ -155,11 +145,4 @@ public class FirstTets implements IAbstractTest {
         getDriver().close();
 
     }
-
-
-
-
-
-
-
 }

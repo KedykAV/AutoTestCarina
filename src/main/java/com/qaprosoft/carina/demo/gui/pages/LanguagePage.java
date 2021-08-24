@@ -17,8 +17,8 @@ public class LanguagePage extends AbstractPage {
     public void clickDE(){
         deutsch.click();
     }
-    public ExtendedWebElement getTextLang(){
-        deutsch.getText();
-        return deutsch;
+    public String getTextLang(){
+
+        return deutsch.getText();
     }
 }
