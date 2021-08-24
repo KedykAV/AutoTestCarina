@@ -86,7 +86,7 @@ public class FirstTets implements IAbstractTest {
         pause(2);
         homePage.clickCcBtn();
         SectionPage sectionPage = new SectionPage(getDriver());
-        sectionPage.getProductList().get(1).click();
+        sectionPage.getProductList().get(2).click();
         ProductPage productPage = new ProductPage(getDriver());
         Assert.assertTrue(productPage.getAddButton().isElementPresent());
         getDriver().close();
@@ -112,7 +112,7 @@ public class FirstTets implements IAbstractTest {
         pause(2);
         homePage.clickCcBtn();
         SectionPage sectionPage = new SectionPage(getDriver());
-        sectionPage.getProductList().get(1).click();
+        sectionPage.getProductList().get(2).click();
         ProductPage productPage = new ProductPage(getDriver());
         productPage.getAddButton().click();
         pause(2);
@@ -137,7 +137,7 @@ public class FirstTets implements IAbstractTest {
         pause(2);
         homePage.clickCcBtn();
         SectionPage sectionPage = new SectionPage(getDriver());
-        sectionPage.getProductList().get(1).click();
+        sectionPage.getProductList().get(2).click();
         ProductPage productPage = new ProductPage(getDriver());
         productPage.getBuyButton().click();
         BuyPage buyPage = new BuyPage(getDriver());

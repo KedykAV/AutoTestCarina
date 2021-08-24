@@ -19,6 +19,11 @@ public class WithRegistration implements IAbstractTest {
         authorizationPage.authorization();
         Assert.assertEquals(homePage.getHelloText(), "Hello, TestLaba21", "User not authorised");
     }
+    @AfterMethod
+    public void closeDriver(){
+        getDriver().close();
+    }
+
 
 
 
