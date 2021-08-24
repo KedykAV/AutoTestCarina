@@ -32,7 +32,7 @@ public class FirstTets implements IAbstractTest {
         AuthorizationPage authorizationPage = new AuthorizationPage(getDriver());
         authorizationPage.authorization();
         Assert.assertEquals(homePage.getHelloText(), "Hello, TestLaba21", "User not authorised");
-        homePage.getDriver().close();
+
 
     }
     @Test()
@@ -43,7 +43,7 @@ public class FirstTets implements IAbstractTest {
         homePage.scrollToHeader();
         homePage.pause(3);
         Assert.assertTrue(homePage.scrollToHeader());
-        homePage.getDriver().close();
+
 
     }
     @Test()
@@ -55,7 +55,7 @@ public class FirstTets implements IAbstractTest {
         pause(2);
         homePage.clickCcBtn();
         Assert.assertEquals(homePage.getSectText(), "Computer Components", "Section don't open!");
-        getDriver().close();
+
     }
     @Test()
     public void returnHome(){
@@ -65,7 +65,7 @@ public class FirstTets implements IAbstractTest {
         sectionPage.getNavLogo().click();
         getDriver().getTitle();
         Assert.assertEquals(getDriver().getTitle(), "Amazon.com. Spend less. Smile more.", "Don't return to Home Page");
-        getDriver().close();
+
 
     }
     @Test
@@ -75,7 +75,7 @@ public class FirstTets implements IAbstractTest {
         homePage.getSearchButton().click();
         SearchPage searchPage = new SearchPage(getDriver());
         Assert.assertTrue(searchPage.getResults().get(1).getText().contains("SAMSUNG"));
-        getDriver().close();
+
     }
     @Test()
     public void openProduct(){
@@ -89,7 +89,7 @@ public class FirstTets implements IAbstractTest {
         sectionPage.getProductList().get(2).click();
         ProductPage productPage = new ProductPage(getDriver());
         Assert.assertTrue(productPage.getAddButton().isElementPresent());
-        getDriver().close();
+
     }
     @Test()
     public void changingLanguage(){
@@ -98,7 +98,7 @@ public class FirstTets implements IAbstractTest {
         LanguagePage languagePage = new LanguagePage(getDriver());
         languagePage.clickDE();
         Assert.assertEquals(languagePage.getTextLang(), "Deutsch - DE - Übersetzung", "Don't change language");
-        getDriver().close();
+
         ///!!!! асерт делать как в этом примере!
 
     }
@@ -119,7 +119,7 @@ public class FirstTets implements IAbstractTest {
         productPage.getCartButton().click();
         CartPage cartPage = new CartPage(getDriver());
         Assert.assertTrue(cartPage.getProceedBtn().isElementPresent());
-        getDriver().close();
+
 
     }
 
@@ -142,7 +142,7 @@ public class FirstTets implements IAbstractTest {
         productPage.getBuyButton().click();
         BuyPage buyPage = new BuyPage(getDriver());
         Assert.assertEquals(buyPage.selectAddressText(),"Select a shipping address", "Buying page not open");
-        getDriver().close();
+       
 
     }
 }
