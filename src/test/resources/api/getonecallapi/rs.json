@@ -1,0 +1,5 @@
+{
+  "lat": "regex:[\\d]",
+  "lon": "regex:[\\d]",
+  "timezone": "type:String",
+  "timezone_offset": "skip"}

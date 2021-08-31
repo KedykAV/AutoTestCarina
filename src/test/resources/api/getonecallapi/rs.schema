@@ -1,0 +1,24 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "lat": {
+      "type": "number"
+    },
+    "lon": {
+      "type": "number"
+    },
+    "timezone": {
+      "type": "string"
+    },
+    "timezone_offset": {
+      "type": "integer"
+    }
+  },
+  "required": [
+    "lat",
+    "lon",
+    "timezone",
+    "timezone_offset"
+  ]
+}

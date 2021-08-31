@@ -19,10 +19,10 @@ public class FirstTets implements IAbstractTest {
         homePage.open();
         Assert.assertTrue(homePage.isPageOpened(), "Home page is not opened");
     }
-    @AfterMethod
-    public void closeDriver(){
-        getDriver().close();
-    }
+   // @AfterMethod
+   // public void closeDriver(){
+   //     getDriver().close();
+   // }
 
 
     @Test()
@@ -63,8 +63,8 @@ public class FirstTets implements IAbstractTest {
         homePage.getSection().click();
         SectionPage sectionPage = new SectionPage(getDriver());
         sectionPage.getNavLogo().click();
-        getDriver().getTitle();
-        Assert.assertEquals(getDriver().getTitle(), "Amazon.com. Spend less. Smile more.", "Don't return to Home Page");
+        homePage.getTitle();
+        Assert.assertEquals(homePage.getTitle(), "Amazon.com. Spend less. Smile more.", "Don't return to Home Page");
 
 
     }
@@ -142,7 +142,7 @@ public class FirstTets implements IAbstractTest {
         productPage.getBuyButton().click();
         BuyPage buyPage = new BuyPage(getDriver());
         Assert.assertEquals(buyPage.selectAddressText(),"Select a shipping address", "Buying page not open");
-       
+
 
     }
 }
