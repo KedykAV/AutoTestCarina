@@ -1,0 +1,59 @@
+{
+  "cod": "200",
+  "message": "skip",
+  "cnt": "regex:[\\d]",
+  "list": [
+    {
+      "dt": "skip",
+      "main": {
+        "temp": "skip",
+        "feels_like": "skip",
+        "temp_min": "skip",
+        "temp_max": "skip",
+        "pressure": "skip",
+        "sea_level": "skip",
+        "grnd_level": "skip",
+        "humidity": "skip",
+        "temp_kf": "skip"
+      },
+      "weather": [
+        {
+          "id": "skip",
+          "main": "skip",
+          "description": "skip",
+          "icon": "skip"
+        }
+      ],
+      "clouds": {
+        "all": "skip"
+      },
+      "wind": {
+        "speed": "skip",
+        "deg":"skip",
+        "gust": "skip"
+      },
+      "visibility": "skip",
+      "pop": "skip",
+      "rain": {
+        "3h": "skip"
+      },
+      "sys": {
+        "pod": "skip"
+      },
+      "dt_txt": "skip"
+    }
+  ],
+  "city": {
+    "id": "skip",
+    "name": "type:String",
+    "coord": {
+      "lat": "regex:[\\d]",
+      "lon": "regex:[\\d]"
+    },
+    "country": "type:String",
+    "population":"regex:[\\d]",
+    "timezone": "regex:[\\d]",
+    "sunrise": "skip",
+    "sunset": "skip"
+  }
+}

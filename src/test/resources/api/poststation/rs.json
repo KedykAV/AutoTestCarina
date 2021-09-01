@@ -1,0 +1,13 @@
+{
+  "ID": "skip",
+  "updated_at": "skip",
+  "created_at": "skip",
+  "user_id": "skip",
+  "external_id": "type:String",
+  "name": "type:String",
+  "latitude":"regex:[\\d]",
+  "longitude": "regex:[\\d]",
+  "altitude":"regex:[\\d]",
+  "rank": "skip",
+  "source_type": "skip"
+}
