@@ -52,6 +52,7 @@ public class APIWeatherTests implements IAbstractTest {
     @Test
     public void testCreateStation(){
         PostStation postStation = new PostStation();
+//        postStation.request.queryParam("appId", R.TESTDATA.get("appid")); //  one of auth method fo use.
         postStation.expectResponseStatus(HttpResponseStatusType.CREATED_201);
         postStation.callAPI();
         postStation.validateResponse();
