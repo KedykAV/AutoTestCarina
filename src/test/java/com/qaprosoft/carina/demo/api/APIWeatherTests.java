@@ -3,6 +3,7 @@ package com.qaprosoft.carina.demo.api;
 import com.qaprosoft.apitools.validation.JsonCompareKeywords;
 import com.qaprosoft.carina.core.foundation.IAbstractTest;
 import com.qaprosoft.carina.core.foundation.api.http.HttpResponseStatusType;
+import com.qaprosoft.carina.core.foundation.utils.R;
 import com.qaprosoft.carina.demo.api.openweather.GetCallForecast;
 import com.qaprosoft.carina.demo.api.openweather.GetOneCallAPI;
 import com.qaprosoft.carina.demo.api.openweather.GetWeatherCity;
@@ -45,15 +46,15 @@ public class APIWeatherTests implements IAbstractTest {
         getCallForecast.addParameter("cnt","1");
         getCallForecast.expectResponseStatus(HttpResponseStatusType.OK_200);
         getCallForecast.callAPI();
-        getCallForecast.validateResponse(JSONCompareMode.STRICT,JsonCompareKeywords.ARRAY_CONTAINS.getKey());
-        getCallForecast.validateResponseAgainstSchema("api/getcallforecast/rs.schema");
+        //getCallForecast.validateResponse(JSONCompareMode.STRICT,JsonCompareKeywords.ARRAY_CONTAINS.getKey());
+        getCallForecast.validateResponseAgainstSchema("api/getcallforecast/rs_schema.json");
     }
     @Test
     public void testCreateStation(){
         PostStation postStation = new PostStation();
+//        postStation.request.queryParam("appId", R.TESTDATA.get("appid")); //  one of auth method fo use.
         postStation.expectResponseStatus(HttpResponseStatusType.CREATED_201);
         postStation.callAPI();
         postStation.validateResponse();
     }
-
 }
