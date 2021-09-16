@@ -14,6 +14,19 @@ public class CartPage extends AbstractPage {
     }
     @FindBy(xpath = "//input [@name='proceedToRetailCheckout']")
     private ExtendedWebElement proceedBtn;
+    @FindBy(xpath="//input[@value='Delete']")
+    private ExtendedWebElement deleteBtn;
+    @FindBy(xpath = "//h1[contains(text(), 'Your Amazon Cart is empty.')]")
+    private ExtendedWebElement emptyCart;
+
+    public ExtendedWebElement getEmptyCart() {
+        return emptyCart;
+    }
+
+    public ExtendedWebElement getDeleteBtn() {
+        return deleteBtn;
+    }
+
     public ExtendedWebElement getProceedBtn(){return proceedBtn;}
 
 

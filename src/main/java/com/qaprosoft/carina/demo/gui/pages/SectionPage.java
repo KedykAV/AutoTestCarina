@@ -24,7 +24,6 @@ public class SectionPage extends AbstractPage {
     private List<ExtendedWebElement> productList;
 
 
-
     public SectionPage(WebDriver driver) {
         super(driver);
     }

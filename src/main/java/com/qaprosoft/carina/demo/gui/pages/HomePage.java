@@ -28,38 +28,31 @@ import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebEleme
 import com.qaprosoft.carina.core.gui.AbstractPage;
 
 
-
 public class HomePage extends AbstractPage {
     private static final Logger LOGGER = LoggerFactory.getLogger(HomePage.class);
 
-    @FindBy(xpath ="//input[@type='email']")
+    @FindBy(xpath = "//input[@type='email']")
     private ExtendedWebElement emailField;
     @FindBy(xpath = "//span[@class='icp-nav-flag icp-nav-flag-us']")
     private ExtendedWebElement langButton;
 
-    @FindBy(id="twotabsearchtextbox")
+    @FindBy(id = "twotabsearchtextbox")
     private ExtendedWebElement searchField;
-    @FindBy(id="nav-search-submit-button")
+    @FindBy(id = "nav-search-submit-button")
     private ExtendedWebElement searchButton;
 
     @FindBy(xpath = "//img[contains(@alt,'Computers')]//parent::div[contains(@class,'a-section')]")
     private ExtendedWebElement section;
-
     @FindBy(xpath = "//span[contains(text(),'Hello, ') ]")
     private ExtendedWebElement hello;
-
     @FindBy(xpath = "//span[contains(text(),'Hello, TestLaba21') ]")
     private ExtendedWebElement helloTest;
-
     @FindBy(xpath = "//div[contains(@class,'a-cardui fluid')]")
     private List<ExtendedWebElement> sectors;
-
     @FindBy(className = "news-column-index")
     private ExtendedWebElement openpage;
-
     @FindBy(xpath = "//a[contains(text( ),  'Conditions ')]")
     private ExtendedWebElement footer;
-
     @FindBy(xpath = "//i[@class='hm-icon nav-sprite']")
     private ExtendedWebElement allBtn;
     @FindBy(xpath = "//div[contains(text(),'Computers')]")
@@ -68,38 +61,83 @@ public class HomePage extends AbstractPage {
     private ExtendedWebElement ccBtn;
     @FindBy(xpath = "//span[contains(text(), 'Computer Components')]//parent::span[@class='a-list-item']")
     private ExtendedWebElement sectText;
-
+    @FindBy(xpath = "//option[contains(text(),'Books')]")
+    private ExtendedWebElement serchBook;
+    @FindBy(xpath = "//span[@id='searchDropdownDescription']/parent::div")
+    private ExtendedWebElement buttonSearchList;
+    @FindBy(xpath = "//span[contains(text(),'Deliver to')]")
+    private ExtendedWebElement changingDeliverButton;
+    @FindBy(xpath = "//span[contains(@class,'a-dropdown-prompt')] ")
+    private ExtendedWebElement listOfCountriesButton;
+    @FindBy(xpath = "//a[contains(@href,'javascript:void(0)')]/parent::li")
+    private List<ExtendedWebElement> countries;
+    @FindBy(xpath = "//button[contains(text(),'Done')]")
+    private ExtendedWebElement doneButton;
+    @FindBy (xpath = "//span[contains(@class, 'nav-line-2 nav-progressive-content')]")
+    private ExtendedWebElement countryToDelivery;
 
     public HomePage(WebDriver driver) {
         super(driver);
         setPageAbsoluteURL(R.CONFIG.get(Configuration.Parameter.URL.getKey()));
     }
 
+    public String getCountryToDelivery() {
+        return countryToDelivery.getText();
+    }
 
+    public ExtendedWebElement getDoneButton() {
+        return doneButton;
+    }
 
-    public ExtendedWebElement getLoginButton(){
+    public ExtendedWebElement getSerchBook() {
+        return serchBook;
+    }
+
+    public ExtendedWebElement getButtonSearchList() {
+        return buttonSearchList;
+    }
+
+    public ExtendedWebElement getLoginButton() {
         return hello;
     }
-    public void clickAllBtn(){
-        allBtn.click();
-    }
-    public void clickCompBtn() {compBtn.click();}
-    public void clickCcBtn() {ccBtn.click();}
-    public String getSectText(){return sectText.getText();}
 
-    public String getHelloText(){
+    public void clickAllBtn() {
+        allBtn.click(3);
+    }
+
+    public void clickCompBtn() {
+        compBtn.click();
+    }
+
+    public void clickCcBtn() {
+        ccBtn.click();
+    }
+
+    public String getSectText() {
+        return sectText.getText();
+    }
+
+    public ExtendedWebElement getChangingDeliverButton() {
+        return changingDeliverButton;
+    }
+
+    public ExtendedWebElement getListOfCountriesButton() {
+        return listOfCountriesButton;
+    }
+
+    public String getHelloText() {
         return helloTest.getText();
     }
 
-    public ExtendedWebElement getFooter(){
-        return  footer;
+    public ExtendedWebElement getFooter() {
+        return footer;
     }
 
-    public void scrollToFooter (){
+    public void scrollToFooter() {
         footer.scrollTo();
     }
 
-    public boolean scrollToHeader (){
+    public boolean scrollToHeader() {
         hello.scrollTo();
         return true;
     }
@@ -108,18 +146,37 @@ public class HomePage extends AbstractPage {
     public ExtendedWebElement getSection() {
         return section;
     }
-    public ExtendedWebElement getSearchField(){
+
+    public ExtendedWebElement getSearchField() {
         return searchField;
     }
 
-    public ExtendedWebElement getSearchButton(){
+    public ExtendedWebElement getSearchButton() {
         return searchButton;
     }
-    public ExtendedWebElement getLangButton(){
+
+    public ExtendedWebElement getLangButton() {
         return langButton;
     }
-    public List<ExtendedWebElement> getSectors(){
+
+    public List<ExtendedWebElement> getSectors() {
         return sectors;
+    }
+
+    public List<ExtendedWebElement> getCountries() {
+        return countries;
+    }
+
+    public String getCurrentCountryName() {
+        return listOfCountriesButton.getText();
+    }
+
+    public String changeCountry() {
+        int countryIndex = (int) (Math.random() * 246);
+        ExtendedWebElement currentCountry = countries.get(countryIndex);
+        String nameCountry = currentCountry.getText();
+        currentCountry.click();
+        return nameCountry;
     }
 
 
