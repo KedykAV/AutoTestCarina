@@ -22,10 +22,24 @@ public class AuthorizationPage extends AbstractPage {
     private ExtendedWebElement passField;
     @FindBy(id="signInSubmit")
     private ExtendedWebElement signButton;
+    @FindBy(xpath = "//div[contains(text(),'Enter your email or mobile phone number')]")
+    private ExtendedWebElement errorMassege;
+    @FindBy(xpath = "//h4[contains(text(),'There was a problem')]")
+    private ExtendedWebElement problemMessage;
+
 
     public AuthorizationPage(WebDriver driver) {
         super(driver);
     }
+
+    public ExtendedWebElement getProblemMessage() {
+        return problemMessage;
+    }
+
+    public ExtendedWebElement getErrorMassege() {
+        return errorMassege;
+    }
+
     public ExtendedWebElement getEmailField(){
         return emailField;
     }
@@ -47,5 +61,8 @@ public class AuthorizationPage extends AbstractPage {
     }
 
 
+    }
 
-}
+
+
+

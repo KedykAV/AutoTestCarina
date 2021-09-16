@@ -75,7 +75,6 @@ public class FirstTets implements IAbstractTest {
         homePage.getSearchButton().click();
         SearchPage searchPage = new SearchPage(getDriver());
         Assert.assertTrue(searchPage.getResults().get(1).getText().contains("SAMSUNG"));
-
     }
     @Test()
     public void openProduct(){
@@ -119,8 +118,6 @@ public class FirstTets implements IAbstractTest {
         productPage.getCartButton().click();
         CartPage cartPage = new CartPage(getDriver());
         Assert.assertTrue(cartPage.getProceedBtn().isElementPresent());
-
-
     }
 
 
@@ -142,7 +139,5 @@ public class FirstTets implements IAbstractTest {
         productPage.getBuyButton().click();
         BuyPage buyPage = new BuyPage(getDriver());
         Assert.assertEquals(buyPage.selectAddressText(),"Select a shipping address", "Buying page not open");
-
-
     }
 }

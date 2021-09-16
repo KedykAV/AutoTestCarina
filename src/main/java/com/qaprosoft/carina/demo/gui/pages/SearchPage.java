@@ -14,9 +14,22 @@ public class SearchPage extends AbstractPage {
 
     @FindBy(xpath = "//span[contains(text(),'SAMSUNG')]")
     List<ExtendedWebElement> results;
+    @FindBy(xpath = "//span[contains(text(),'No results for')]")
+    private ExtendedWebElement noResultInfo;
+
+    public static int getRandomDiceNumber() {
+        return (int) (Math.random()*10)+1;
+    }
+
 
     public List<ExtendedWebElement> getResults(){
         return results;
     }
 
+    public ExtendedWebElement getNoResultInfo() {
+        return noResultInfo;
+    }
+   // public ExtendedWebElement clickRandomBut(){
+     //   for(int i=getRandomDiceNumber();i<=10;){}
+    //}
 }
