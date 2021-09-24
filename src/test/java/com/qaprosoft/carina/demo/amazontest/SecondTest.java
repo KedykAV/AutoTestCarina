@@ -104,21 +104,21 @@ public class SecondTest implements IAbstractTest {
     }
 
     @Test
-    public void isAnyRadioButtonChecked(){
+    public void isAnyRadioButtonsChecked(){
         HomePage homePage = new HomePage(getDriver());
         homePage.getLangButton().click();
         LanguagePage languagePage = new LanguagePage(getDriver());
         Assert.assertTrue(languagePage.isAnyRadioButtonChecked(),"Don't change any radio-button");
     }
     @Test
-    public void isAllRadioButtonsClickable(){
+    public void isAllRadioButtonClickable(){
         HomePage homePage=new HomePage(getDriver());
         homePage.getLangButton().click();
         LanguagePage languagePage =new LanguagePage(getDriver());
         Assert.assertTrue(languagePage.clickableAllRadioButton(),"Don't all radio-buttons is clickable");
     }
     @Test
-    public void clickAndAssertAllButtons(){
+    public void clickAndAssertAllButton(){
         HomePage homePage = new HomePage(getDriver());
         homePage.getLangButton().click();
         LanguagePage languagePage =new LanguagePage(getDriver());
