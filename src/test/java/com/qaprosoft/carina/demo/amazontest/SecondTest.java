@@ -45,7 +45,7 @@ public class SecondTest implements IAbstractTest {
         pause(2);
         homePage.clickCcBtn();
         SectionPage sectionPage = new SectionPage(getDriver());
-        sectionPage.getProductList().get(2).click();
+        sectionPage.getProductList().get(0).click();
         ProductPage productPage = new ProductPage(getDriver());
         productPage.getAddButton().click();
         pause(2);
