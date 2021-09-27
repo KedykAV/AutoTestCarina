@@ -20,7 +20,7 @@ public class SectionPage extends AbstractPage {
     private ExtendedWebElement product;
     @FindBy(xpath = "//div[@id='nav-logo']")
     private ExtendedWebElement navLogo;
-    @FindBy(xpath = "//span[@class='a-size-base-plus a-color-base a-text-normal']")
+    @FindBy(xpath = "//span[@class='a-size-base a-color-base a-text-normal']")
     private List<ExtendedWebElement> productList;
 
 
