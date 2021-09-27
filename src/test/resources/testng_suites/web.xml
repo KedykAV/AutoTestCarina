@@ -17,9 +17,8 @@
 
 	<test name="Tets ">
 		<classes>
-			<class name="com.qaprosoft.carina.demo.amazontest.WithRegistration">
+			<class name="com.qaprosoft.carina.demo.amazontest.SecondTest">
 			<methods>
-				<exclude name="buyingProduct1" />
 			</methods>
 			</class>
 
