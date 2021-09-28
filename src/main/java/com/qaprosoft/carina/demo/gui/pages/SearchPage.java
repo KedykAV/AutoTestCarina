@@ -16,11 +16,17 @@ public class SearchPage extends AbstractPage {
     List<ExtendedWebElement> results;
     @FindBy(xpath = "//span[contains(text(),'No results for')]")
     private ExtendedWebElement noResultInfo;
+    @FindBy(xpath = "//span[contains(text(),'results for')]")
+    private ExtendedWebElement resultMessage;
 
     public static int getRandomDiceNumber() {
         return (int) (Math.random()*10)+1;
     }
 
+
+    public ExtendedWebElement getResultMessage() {
+        return resultMessage;
+    }
 
     public List<ExtendedWebElement> getResults(){
         return results;
