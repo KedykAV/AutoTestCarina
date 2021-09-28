@@ -1,6 +1,7 @@
 package com.qaprosoft.carina.demo.amazontest;
 
 import com.qaprosoft.carina.core.foundation.IAbstractTest;
+import com.qaprosoft.carina.core.foundation.dataprovider.annotations.XlsDataSourceParameters;
 import com.qaprosoft.carina.demo.gui.pages.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -40,15 +41,12 @@ public class SecondTest implements IAbstractTest {
     public void deleteFromCart() {
         HomePage homePage = new HomePage(getDriver());
         homePage.clickAllBtn();
-        pause(2);
         homePage.clickCompBtn();
-        pause(2);
         homePage.clickCcBtn();
         SectionPage sectionPage = new SectionPage(getDriver());
         sectionPage.getProductList().get(0).click();
         ProductPage productPage = new ProductPage(getDriver());
         productPage.getAddButton().click();
-        pause(2);
         productPage.getCloseButton().clickIfPresent();
         productPage.getCartButton().click();
         CartPage cartPage = new CartPage(getDriver());
@@ -104,24 +102,39 @@ public class SecondTest implements IAbstractTest {
     }
 
     @Test
-    public void isAnyRadioButtonsChecked(){
+    public void isAnyRadioButtonsChecked() {
         HomePage homePage = new HomePage(getDriver());
         homePage.getLangButton().click();
         LanguagePage languagePage = new LanguagePage(getDriver());
-        Assert.assertTrue(languagePage.isAnyRadioButtonChecked(),"Don't change any radio-button");
+        Assert.assertTrue(languagePage.isAnyRadioButtonChecked(), "Don't change any radio-button");
     }
+
     @Test
-    public void isAllRadioButtonClickable(){
-        HomePage homePage=new HomePage(getDriver());
-        homePage.getLangButton().click();
-        LanguagePage languagePage =new LanguagePage(getDriver());
-        Assert.assertTrue(languagePage.clickableAllRadioButton(),"Don't all radio-buttons is clickable");
-    }
-    @Test
-    public void clickAndAssertAllButton(){
+    public void isAllRadioButtonClickable() {
         HomePage homePage = new HomePage(getDriver());
         homePage.getLangButton().click();
-        LanguagePage languagePage =new LanguagePage(getDriver());
+        LanguagePage languagePage = new LanguagePage(getDriver());
+        Assert.assertTrue(languagePage.clickableAllRadioButton(), "Don't all radio-buttons is clickable");
+    }
+
+    @Test
+    public void clickAndAssertAllButton() {
+        HomePage homePage = new HomePage(getDriver());
+        homePage.getLangButton().click();
+        LanguagePage languagePage = new LanguagePage(getDriver());
         languagePage.clickAllRadioButtons();
+
+    }
+
+    @Test(dataProvider = "DataProvider")
+    @XlsDataSourceParameters(path = "xls/alx.xlsx", sheet = "Amazon", dsUid = "TestID", dsArgs = "Input")
+    public void searchFieldInput(String inpt) {
+        HomePage homePage = new HomePage(getDriver());
+        homePage.getSearchField().type(inpt);
+        homePage.getSearchButton().click();
+        SearchPage searchPage = new SearchPage(getDriver());
+        Assert.assertTrue(searchPage.getResultMessage().isElementPresent(),"Don't open search results");
     }
 }
+
+
