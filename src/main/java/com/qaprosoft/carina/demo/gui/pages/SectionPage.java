@@ -16,24 +16,29 @@ import java.util.Random;
 public class SectionPage extends AbstractPage {
     private static final Logger LOGGER = LoggerFactory.getLogger(SectionPage.class);
 
-    @FindBy(xpath = "//h2[contains(text(), ' Seagate ')]")
+    @FindBy(xpath = "//h2[contains(text(), 'Seagate')]")
     private ExtendedWebElement product;
     @FindBy(xpath = "//div[@id='nav-logo']")
     private ExtendedWebElement navLogo;
-    @FindBy(xpath = "//span[@class='a-size-base a-color-base a-text-normal']")
+    @FindBy(xpath = "//*[@data-component-type = 's-search-result']")
     private List<ExtendedWebElement> productList;
 
 
     public SectionPage(WebDriver driver) {
         super(driver);
     }
-    public  ExtendedWebElement getProduct(){
+
+    public ExtendedWebElement getProduct() {
         return product;
     }
-    public ExtendedWebElement getNavLogo(){
+
+    public ExtendedWebElement getNavLogo() {
         return navLogo;
     }
-    public List<ExtendedWebElement> getProductList(){return productList;}
+
+    public List<ExtendedWebElement> getProductList() {
+        return productList;
+    }
 
 
 }
