@@ -3,6 +3,7 @@ package com.qaprosoft.carina.demo.amazontest;
 import com.qaprosoft.carina.core.foundation.IAbstractTest;
 import com.qaprosoft.carina.core.foundation.dataprovider.annotations.XlsDataSourceParameters;
 import com.qaprosoft.carina.demo.gui.pages.*;
+import com.qaprosoft.carina.demo.utils.Languages;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.Assert;
@@ -135,6 +136,16 @@ public class SecondTest implements IAbstractTest {
         SearchPage searchPage = new SearchPage(getDriver());
         Assert.assertTrue(searchPage.getResultMessage().isElementPresent(),"Don't open search results");
     }
+    @Test
+    public void langEnumChange(){
+        HomePage homePage=new HomePage(getDriver());
+        homePage.getLangButton().click();
+        LanguagePage languagePage = new LanguagePage(getDriver());
+        languagePage.getLangButton(Languages.ESP.getName());
+        languagePage.getSaveButton().click();
+        Assert.assertTrue(getDriver().getCurrentUrl().contains("language=es_US"), "Language don't switch");
+    }
+
 }
 
 
