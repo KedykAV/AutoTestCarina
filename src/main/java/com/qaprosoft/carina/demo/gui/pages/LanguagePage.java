@@ -12,20 +12,30 @@ import java.util.List;
 
 public class LanguagePage extends AbstractPage {
     private static final Logger LOGGER = LoggerFactory.getLogger(LanguagePage.class);
-    @FindBy(xpath = "//span[contains(text(), ' Deutsch ')]")
-    private ExtendedWebElement deutsch;
+    @FindBy(xpath = "//span[contains(text(), '%s')]")
+    private ExtendedWebElement language;
     @FindBy(css = "input[type='radio']")
     private List<ExtendedWebElement> radioLangButtons;
+    @FindBy (xpath="//input[contains(@class,'a-button-input')]")
+    private ExtendedWebElement saveButton;
+
     public LanguagePage(WebDriver driver) {
         super(driver);
     }
-    public void clickDE(){
-        deutsch.click();
-    }
-    public String getTextLang(){
 
-        return deutsch.getText();
+    public void clickDE() {
+        language.click();
     }
+
+    public void getLangButton(String name) {
+        language.format(name).click();
+        language.format(name).isChecked();
+    }
+
+    public String getLangName(String name) {
+        return language.format(name).getText();
+    }
+
     public boolean isAnyRadioButtonChecked() {
         for (ExtendedWebElement radBut : radioLangButtons) {
             if (radBut.isChecked()) {
@@ -34,20 +44,26 @@ public class LanguagePage extends AbstractPage {
         }
         return false;
     }
-    public boolean clickableAllRadioButton(){
-        for(ExtendedWebElement radBut: radioLangButtons){
-            if(radBut.isClickable()){
+
+    public boolean clickableAllRadioButton() {
+        for (ExtendedWebElement radBut : radioLangButtons) {
+            if (radBut.isClickable()) {
                 return true;
             }
         }
         return false;
     }
-    public void clickAllRadioButtons(){
+
+    public void clickAllRadioButtons() {
         SoftAssert softAssert = new SoftAssert();
-        for(int i = 1; i < radioLangButtons.size(); i++){
-             radioLangButtons.get(i).click();
-             softAssert.assertTrue(radioLangButtons.get(i).isChecked());
+        for (int i = 1; i < radioLangButtons.size(); i++) {
+            radioLangButtons.get(i).click();
+            softAssert.assertTrue(radioLangButtons.get(i).isChecked());
         }
         softAssert.assertAll();
     }
+
+    public ExtendedWebElement getSaveButton() {
+        return saveButton;
     }
+}

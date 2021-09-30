@@ -88,19 +88,8 @@ public class FirstTets implements IAbstractTest {
         sectionPage.getProductList().get(2).click();
         ProductPage productPage = new ProductPage(getDriver());
         Assert.assertTrue(productPage.getAddButton().isElementPresent());
-
     }
-    @Test()
-    public void changingLanguage(){
-        HomePage homePage = new HomePage(getDriver());
-        homePage.getLangButton().click();
-        LanguagePage languagePage = new LanguagePage(getDriver());
-        languagePage.clickDE();
-        Assert.assertEquals(languagePage.getTextLang(), "Deutsch - DE - Übersetzung", "Don't change language");
 
-        ///!!!! асерт делать как в этом примере!
-
-    }
 
     @Test()
     public void addToCart(){
@@ -120,24 +109,4 @@ public class FirstTets implements IAbstractTest {
         Assert.assertTrue(cartPage.getProceedBtn().isElementPresent());
     }
 
-
-    @Test()
-    public void buyingProduct(){
-        HomePage homePage = new HomePage(getDriver());
-        homePage.getLoginButton().click();
-        AuthorizationPage authorizationPage = new AuthorizationPage(getDriver());
-        authorizationPage.authorization();
-        Assert.assertEquals(homePage.getHelloText(), "Hello, TestLaba21", "User not authorised");
-        homePage.clickAllBtn();
-        pause(2);
-        homePage.clickCompBtn();
-        pause(2);
-        homePage.clickCcBtn();
-        SectionPage sectionPage = new SectionPage(getDriver());
-        sectionPage.getProductList().get(2).click();
-        ProductPage productPage = new ProductPage(getDriver());
-        productPage.getBuyButton().click();
-        BuyPage buyPage = new BuyPage(getDriver());
-        Assert.assertEquals(buyPage.selectAddressText(),"Select a shipping address", "Buying page not open");
-    }
 }
