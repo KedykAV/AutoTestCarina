@@ -21,6 +21,7 @@ public class WithRegistration implements IAbstractTest {
     }
 
 
+
     @Test()
     public void buyingProduct() {
         HomePage homePage = new HomePage(getDriver());
@@ -35,6 +36,24 @@ public class WithRegistration implements IAbstractTest {
         productPage.getBuyButton().click();
         BuyPage buyPage = new BuyPage(getDriver());
         Assert.assertEquals(buyPage.selectAddressText(), "Select a shipping address", "Buying page not open");
+    }
+
+    @Test
+    public void isProductSavedInCartAfterSingInOut(){
+        HomePage homePage = new HomePage(getDriver());
+        homePage.clickAllBtn();
+        pause(2);
+        homePage.clickCompBtn();
+        pause(2);
+        homePage.clickCcBtn();
+        SectionPage sectionPage = new SectionPage(getDriver());
+        sectionPage.getProductList().get(2).click();
+        ProductPage productPage = new ProductPage(getDriver());
+        productPage.getAddButton().click();
+        productPage.getCloseButton().clickIfPresent();
+
+
+
 
     }
 
