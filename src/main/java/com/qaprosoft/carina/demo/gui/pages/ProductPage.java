@@ -24,6 +24,10 @@ public class ProductPage extends AbstractPage {
     @FindBy(xpath = "//input[contains(@id, 'buy')]")
     private ExtendedWebElement buyButton;
 
+    @FindBy(xpath = "//span[contains(@id,'mbc-buybutton-addtocart-1-announce')]")
+    private  ExtendedWebElement alternativeAddButton;
+
+
 
 
     public ProductPage(WebDriver driver) {
@@ -43,4 +47,7 @@ public class ProductPage extends AbstractPage {
         return buyButton;
     }
 
+    public ExtendedWebElement getAlternativeAddButton() {
+        return alternativeAddButton;
+    }
 }

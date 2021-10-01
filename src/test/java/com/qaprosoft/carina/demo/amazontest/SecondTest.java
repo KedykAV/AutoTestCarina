@@ -6,6 +6,7 @@ import com.qaprosoft.carina.demo.gui.pages.*;
 import com.qaprosoft.carina.demo.utils.Languages;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.test.context.TestPropertySource;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -144,6 +145,28 @@ public class SecondTest implements IAbstractTest {
         languagePage.getLangButton(Languages.ESP.getName());
         languagePage.getSaveButton().click();
         Assert.assertTrue(getDriver().getCurrentUrl().contains("language=es_US"), "Language don't switch");
+    }
+    @Test
+    public void searchActuallToBuyProduct(){
+        HomePage homePage = new HomePage(getDriver());
+        homePage.getSearchField().type("mac");
+        homePage.getSearchButton().click();
+        SearchPage searchPage = new SearchPage(getDriver());
+        searchPage.validateActuallItem();
+        ProductPage productPage = new ProductPage(getDriver());
+        Assert.assertTrue(productPage.getAlternativeAddButton().isElementPresent()||productPage.getAddButton().isElementPresent(),"Product don't available to add to cart! ");
+    }
+    @Test
+    public void switchCheckboxBrands(){
+        HomePage homePage = new HomePage(getDriver());
+        homePage.clickAllBtn();
+        pause(2);
+        homePage.clickCompBtn();
+        pause(2);
+        homePage.clickCcBtn();
+        SectionPage sectionPage = new SectionPage(getDriver());
+        sectionPage.clickAllCheckbox();
+//Problem with switch!
     }
 
 }

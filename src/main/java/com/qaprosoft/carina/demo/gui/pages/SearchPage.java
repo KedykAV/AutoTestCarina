@@ -18,6 +18,8 @@ public class SearchPage extends AbstractPage {
     private ExtendedWebElement noResultInfo;
     @FindBy(xpath = "//span[contains(text(),'results for')]")
     private ExtendedWebElement resultMessage;
+    @FindBy(xpath = "//span[contains(@class,'a-size-medium a-color-base a-text-normal')]")
+    List<ExtendedWebElement> items;
 
     public static int getRandomDiceNumber() {
         return (int) (Math.random()*10)+1;
@@ -26,6 +28,22 @@ public class SearchPage extends AbstractPage {
 
     public ExtendedWebElement getResultMessage() {
         return resultMessage;
+    }
+
+    public List<ExtendedWebElement> getItems() {
+        return items;
+    }
+    public void validateActuallItem(){
+        for(int i=0;i<=items.size();i++){
+            items.get(i).click();
+            ProductPage prd=new ProductPage(getDriver());
+            if(prd.getAlternativeAddButton().isElementPresent()){
+                prd.getAlternativeAddButton().click();
+            }else{
+                prd.getDriver().navigate().back();
+            }
+
+        }
     }
 
     public List<ExtendedWebElement> getResults(){

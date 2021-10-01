@@ -23,18 +23,14 @@ public class LanguagePage extends AbstractPage {
         super(driver);
     }
 
-    public void clickDE() {
-        language.click();
-    }
+
 
     public void getLangButton(String name) {
         language.format(name).click();
         language.format(name).isChecked();
     }
 
-    public String getLangName(String name) {
-        return language.format(name).getText();
-    }
+
 
     public boolean isAnyRadioButtonChecked() {
         for (ExtendedWebElement radBut : radioLangButtons) {

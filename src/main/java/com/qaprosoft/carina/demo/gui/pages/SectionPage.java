@@ -2,15 +2,13 @@ package com.qaprosoft.carina.demo.gui.pages;
 
 import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
 import com.qaprosoft.carina.core.gui.AbstractPage;
-import com.qaprosoft.carina.demo.gui.components.Items;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.testng.asserts.SoftAssert;
 
-import java.lang.invoke.MethodHandles;
 import java.util.List;
-import java.util.Random;
 
 
 public class SectionPage extends AbstractPage {
@@ -22,6 +20,8 @@ public class SectionPage extends AbstractPage {
     private ExtendedWebElement navLogo;
     @FindBy(xpath = "//*[@data-component-type = 's-search-result']")
     private List<ExtendedWebElement> productList;
+    @FindBy(xpath ="//div[contains(@id,'brandsRefinements')]/descendant-or-self::*[@type='checkbox']")
+    private List<ExtendedWebElement> brandsCheckbox;
 
 
     public SectionPage(WebDriver driver) {
@@ -39,6 +39,15 @@ public class SectionPage extends AbstractPage {
     public List<ExtendedWebElement> getProductList() {
         return productList;
     }
+    public void clickAllCheckbox() {
+        SoftAssert softAssert = new SoftAssert();
+        for (int i = 0; i < brandsCheckbox.size(); i++) {
+            brandsCheckbox.get(i).click();
+            softAssert.assertTrue(brandsCheckbox.get(i).isChecked());
+        }
+        softAssert.assertAll();
+    }
+
 
 
 }
