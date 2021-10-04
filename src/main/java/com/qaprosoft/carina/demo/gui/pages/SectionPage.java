@@ -24,6 +24,7 @@ public class SectionPage extends AbstractPage {
     private List<ExtendedWebElement> brandsCheckbox;
 
 
+
     public SectionPage(WebDriver driver) {
         super(driver);
     }
@@ -39,15 +40,16 @@ public class SectionPage extends AbstractPage {
     public List<ExtendedWebElement> getProductList() {
         return productList;
     }
-    public void clickAllCheckbox() {
+
+    public void validateCheckedAllCheckbox() {
         SoftAssert softAssert = new SoftAssert();
         for (int i = 0; i < brandsCheckbox.size(); i++) {
             brandsCheckbox.get(i).click();
+            pause(2);
             softAssert.assertTrue(brandsCheckbox.get(i).isChecked());
         }
         softAssert.assertAll();
     }
-
 
 
 }

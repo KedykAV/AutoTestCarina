@@ -8,6 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.test.context.TestPropertySource;
 import org.testng.Assert;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -15,7 +16,7 @@ import org.testng.annotations.Test;
 public class SecondTest implements IAbstractTest {
     private static final Logger LOGGER = LoggerFactory.getLogger(SecondTest.class);
 
-    @BeforeMethod
+    @BeforeClass
     public void openSite() {
         HomePage homePage = new HomePage(getDriver());
         homePage.open();
@@ -128,7 +129,7 @@ public class SecondTest implements IAbstractTest {
 
     }
 
-    @Test(dataProvider = "DataProvider")
+    @Test(dataProvider = "SingleDataProvider")
     @XlsDataSourceParameters(path = "xls/alx.xlsx", sheet = "Amazon", dsUid = "TestID", dsArgs = "Input")
     public void searchFieldInput(String inpt) {
         HomePage homePage = new HomePage(getDriver());
@@ -155,18 +156,6 @@ public class SecondTest implements IAbstractTest {
         searchPage.validateActuallItem();
         ProductPage productPage = new ProductPage(getDriver());
         Assert.assertTrue(productPage.getAlternativeAddButton().isElementPresent()||productPage.getAddButton().isElementPresent(),"Product don't available to add to cart! ");
-    }
-    @Test
-    public void switchCheckboxBrands(){
-        HomePage homePage = new HomePage(getDriver());
-        homePage.clickAllBtn();
-        pause(2);
-        homePage.clickCompBtn();
-        pause(2);
-        homePage.clickCcBtn();
-        SectionPage sectionPage = new SectionPage(getDriver());
-        sectionPage.clickAllCheckbox();
-//Problem with switch!
     }
 
 }

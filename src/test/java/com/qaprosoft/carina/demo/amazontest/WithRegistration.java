@@ -51,10 +51,6 @@ public class WithRegistration implements IAbstractTest {
         ProductPage productPage = new ProductPage(getDriver());
         productPage.getAddButton().click();
         productPage.getCloseButton().clickIfPresent();
-
-
-
-
     }
 
 
