@@ -7,7 +7,8 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-public class checkDataProviderTest implements IAbstractTest {
+public class CheckboxTest implements IAbstractTest {
+    SectionPage sectionPage = new SectionPage(getDriver());
     @BeforeClass
     public void openSection(){
         HomePage homePage = new HomePage(getDriver());
@@ -19,7 +20,6 @@ public class checkDataProviderTest implements IAbstractTest {
     }
     @Test()
     public void switchCheckboxBrands(){
-        SectionPage sectionPage = new SectionPage(getDriver());
         sectionPage.validateCheckedAllCheckbox();
         /*SoftAssert softAssert = new SoftAssert();
         for(int i = 0; i<sectionPage.getBrandsCheckbox().size();i++){
@@ -29,4 +29,17 @@ public class checkDataProviderTest implements IAbstractTest {
         }
         softAssert.assertAll();*/
     }
+    @Test()
+    public void visibilityClearCheckboxButton(){
+        sectionPage.getBrandsCheckbox().get(0).click(1);
+        Assert.assertTrue(sectionPage.getClearCheckboxButton().isVisible()||sectionPage.getClearCheckboxButton().isElementPresent(),"Clear button don't visible!");
+    }
+    @Test
+    public void clearingCheckboxes(){
+       sectionPage.getBrandsCheckbox().get(0).click(1);
+       sectionPage.getClearCheckboxButton().click();
+       Assert.assertFalse(sectionPage.getBrandsCheckbox().get(0).isChecked(),"Checkbox don't clearing!");
+    }
+
+
 }

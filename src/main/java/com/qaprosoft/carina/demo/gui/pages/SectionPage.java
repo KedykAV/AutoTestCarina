@@ -22,6 +22,8 @@ public class SectionPage extends AbstractPage {
     private List<ExtendedWebElement> productList;
     @FindBy(xpath ="//div[contains(@id,'brandsRefinements')]/descendant-or-self::*[@type='checkbox']")
     private List<ExtendedWebElement> brandsCheckbox;
+    @FindBy(xpath = "//span[contains(text(),'Clear')]")
+    private ExtendedWebElement clearCheckboxButton;
 
 
 
@@ -31,6 +33,15 @@ public class SectionPage extends AbstractPage {
 
     public ExtendedWebElement getProduct() {
         return product;
+    }
+
+    public ExtendedWebElement getClearCheckboxButton() {
+        return clearCheckboxButton;
+
+    }
+
+    public List<ExtendedWebElement> getBrandsCheckbox() {
+        return brandsCheckbox;
     }
 
     public ExtendedWebElement getNavLogo() {

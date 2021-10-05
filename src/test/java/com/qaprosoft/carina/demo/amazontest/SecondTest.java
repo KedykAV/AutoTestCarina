@@ -6,10 +6,8 @@ import com.qaprosoft.carina.demo.gui.pages.*;
 import com.qaprosoft.carina.demo.utils.Languages;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.test.context.TestPropertySource;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 
@@ -143,7 +141,7 @@ public class SecondTest implements IAbstractTest {
         HomePage homePage=new HomePage(getDriver());
         homePage.getLangButton().click();
         LanguagePage languagePage = new LanguagePage(getDriver());
-        languagePage.getLangButton(Languages.ESP.getName());
+        languagePage.changeLang(Languages.ESP.getName());
         languagePage.getSaveButton().click();
         Assert.assertTrue(getDriver().getCurrentUrl().contains("language=es_US"), "Language don't switch");
     }
