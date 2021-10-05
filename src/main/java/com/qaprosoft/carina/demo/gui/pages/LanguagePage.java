@@ -25,7 +25,7 @@ public class LanguagePage extends AbstractPage {
 
 
 
-    public void getLangButton(String name) {
+    public void changeLang(String name) {
         language.format(name).click();
         language.format(name).isChecked();
     }

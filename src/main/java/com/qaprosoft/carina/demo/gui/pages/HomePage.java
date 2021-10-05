@@ -26,6 +26,7 @@ import org.slf4j.LoggerFactory;
 
 import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
 import com.qaprosoft.carina.core.gui.AbstractPage;
+import org.testng.Assert;
 
 
 public class HomePage extends AbstractPage {
@@ -75,6 +76,13 @@ public class HomePage extends AbstractPage {
     private ExtendedWebElement doneButton;
     @FindBy (xpath = "//span[contains(@class, 'nav-line-2 nav-progressive-content')]")
     private ExtendedWebElement countryToDelivery;
+    @FindBy (xpath = "//a[@class='a-dropdown-link']/descendant-or-self::span[contains(text(),'%s')]")
+    private ExtendedWebElement regions;
+    @FindBy (xpath = "//a[@id='icp-touch-link-country']")
+    private ExtendedWebElement changeRegionBtn;
+    @FindBy(xpath = "//span[@class='a-dropdown-prompt']")
+    private ExtendedWebElement dropDownReg;
+
 
     public HomePage(WebDriver driver) {
         super(driver);
@@ -179,6 +187,16 @@ public class HomePage extends AbstractPage {
         return nameCountry;
     }
 
+    public ExtendedWebElement getChangeRegionBtn() {
+        return changeRegionBtn;
+    }
+    public void  changeRegion(String reg){
+        regions.format(reg).click();
+    }
+
+    public ExtendedWebElement getDropDownReg() {
+        return dropDownReg;
+    }
 
 }
 
