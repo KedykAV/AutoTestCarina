@@ -190,12 +190,20 @@ public class HomePage extends AbstractPage {
     public ExtendedWebElement getChangeRegionBtn() {
         return changeRegionBtn;
     }
-    public void  changeRegion(String reg){
-        regions.format(reg).click();
+    public String changeRegion(String reg){
+        ExtendedWebElement currentRegion = regions.format(reg);
+        //regions.format(reg).click();
+        currentRegion.click();
+        //String nameReg = currentRegion.getText();
+
+        return reg;
     }
 
     public ExtendedWebElement getDropDownReg() {
         return dropDownReg;
+    }
+    public String currentlyRegion(){
+        return dropDownReg.getText();
     }
 
 }

@@ -23,8 +23,8 @@ public class WithDataProviderTest implements IAbstractTest {
     public void changeRegions(String region){
         HomePage homePage = new HomePage(getDriver());
         homePage.getDropDownReg().click();
-        homePage.changeRegion(region);
-       // homePage.getDropDownReg().format(region).getText();
-
+        String selectReg = homePage.changeRegion(region);
+        pause(2);
+        Assert.assertEquals(homePage.currentlyRegion(),selectReg);
     }
 }
