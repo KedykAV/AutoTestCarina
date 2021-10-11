@@ -2,7 +2,7 @@ package com.qaprosoft.carina.demo.amazontest;
 
 import com.qaprosoft.carina.core.foundation.IAbstractTest;
 import com.qaprosoft.carina.demo.gui.pages.HomePage;
-import com.qaprosoft.carina.demo.utils.JCUtils;
+import com.qaprosoft.carina.demo.utils.JSUtils;
 import org.aspectj.util.FileUtil;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -19,15 +19,24 @@ public class WithJCExecutor implements IAbstractTest {
     public void flashing() {
         HomePage homePage = new HomePage(getDriver());
         homePage.open();
-        JCUtils.flash(homePage.getLangButton().getElement(),getDriver());
+        JSUtils.flash(homePage.getLangButton().getElement(),getDriver());
     }
     @Test
     public void display() throws IOException {
         HomePage homePage = new HomePage(getDriver());
         homePage.open();
-        JCUtils.drawBorder(homePage.getLangButton().getElement(),getDriver());
+        JSUtils.drawBorder(homePage.getLangButton().getElement(),getDriver());
         File src = ((TakesScreenshot) getDriver()).getScreenshotAs(OutputType.FILE);
         FileUtil.copyFile(src, new File("/Users/akedyk/first.png"));
+    }
+    @Test
+    public void clickLangJC(){
+        HomePage homePage = new HomePage(getDriver());
+        homePage.open();
+        JSUtils.clickJS(homePage.getLangButton().getElement(),getDriver());
+        pause(3);
+        JSUtils.alertMassage(getDriver(),"This is text!");
+        pause(5);
     }
 
 }

@@ -6,7 +6,7 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-public class JCUtils {
+public class JSUtils {
     public static void flash(WebElement element, WebDriver driver){
         JavascriptExecutor js = ((JavascriptExecutor) driver);
         String bgcolor = element.getCssValue("backgroundColor");
@@ -25,5 +25,13 @@ public class JCUtils {
     public static void drawBorder(WebElement element, WebDriver driver){
         JavascriptExecutor js = ((JavascriptExecutor) driver);
         js.executeScript("arguments[0].style.border='3px solid red'", element);
+    }
+    public static void clickJS(WebElement element, WebDriver driver){
+        JavascriptExecutor js = ((JavascriptExecutor) driver);
+        js.executeScript("arguments[0].click();",element);
+    }
+    public  static  void alertMassage(WebDriver driver,String message){
+        JavascriptExecutor js = ((JavascriptExecutor) driver);
+        js.executeScript("alert('" + message +"')");
     }
 }
